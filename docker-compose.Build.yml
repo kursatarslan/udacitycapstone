@@ -26,7 +26,7 @@ services:
             - rabbitmq
         
     orderapi:
-        container_name: order
+        container_name: orderapi
         ports:
             - 9000:80
             - 9001:443
@@ -38,4 +38,17 @@ services:
             context: ./OrderApi      
         restart: on-failure
         depends_on:
-            - rabbitmq            
+            - rabbitmq
+
+    jwtapi:
+        container_name: jwtapi
+        ports:
+            - 5100:80
+            - 5101:443
+        environment:
+            - "ASPNETCORE_URLS=https://+;http://+"
+            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
+            - Kestrel__Certificates__Default__Password=SecretPassword       
+        build:
+            context: ./TokenManager      
+        restart: on-failure           
