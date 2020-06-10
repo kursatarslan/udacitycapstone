@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "3094f0d9-7572-4b2e-81ad-0bb3c7adc34a",
+		"name": "Udacity Capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://localhost:8001/v1/Customer GetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d12a2f21-65da-417a-b24c-917013d647aa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Welcome to the Cloud!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8001/v1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8001/v1/Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b8602fc8-b46f-4754-ac60-1e7541fc078f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Welcome to the Cloud!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"FirstName\": \"Michael\",\n\t\"LastName\": \"Schumacher\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8001/v1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8001/v1/Customer Update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d632727f-8a30-4f2b-a0d4-712243deb485",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(`Welcome to the Cloud, george!`);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\": \"11ef91e8-7952-4015-9a11-74b305afe179\",\n\t\"FirstName\": \"Michael\",\n\t\"LastName\": \"Schumacher\",\n\t\"Birthday\": \"1984-01-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8001/v1/Customer/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"Customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/v1/0rder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d282f0d7-6c08-456f-b869-8f7859af5655",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    var query = {};",
+							"    pm.request.url.query.all().forEach((p) => { query[p.key] = p.value});",
+							"    ",
+							"    pm.expect(pm.response.text()).to.include(`Welcome to the Cloud, ${query['name']}!`);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:9001/v1/order",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"v1",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:9001/v1/Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5abf948d-b839-4a78-8c76-828db8370e4e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(`Welcome to the Cloud, james!`);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"james\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:9001/v1/Order",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"v1",
+						"Order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:9001/v1/Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdc91408-d0f6-4b48-b5b3-07d241e714de",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"6f25981b-c27e-4210-ac75-b2daf6f96e99\",\n  \"orderState\": 1,\n  \"customerGuid\": \"7de1158f-88a0-47e9-a37b-9d5a0de12ebe\",\n  \"customerFullName\": \"Micheal\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:9001/v1/Order/Pay/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"v1",
+						"Order",
+						"Pay",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5101/Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e738b29a-fd91-409b-b10b-46a80654c84b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Welcome to the Cloud!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8001/v1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:5101/User/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5bff2c93-7dc1-4ca4-803d-d4ac004bcb94",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Welcome to the Cloud!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8001/v1/Customer",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"Customer"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "474172af-b0dc-4f01-b689-36b757a1a103",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6452244b-f304-4f9b-9af6-1dd45ba208e9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "da47f8ba-0618-44d1-9d8f-a273b6070e47",
+			"key": "endpoint",
+			"value": "https://localhost:8001",
+			"type": "string"
+		},
+		{
+			"id": "9235ef69-3331-499f-8be2-bc51801b9b8a",
+			"key": "endpoint",
+			"value": "http://localhost:7000",
+			"type": "string",
+			"disabled": true
+		}
+	],
+	"protocolProfileBehavior": {}
+}
